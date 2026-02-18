@@ -1,0 +1,5 @@
+name: SpawnPointer
+version: '1.0'
+authors: [Kereif, Maporium]
+main: org.minerail.spawnPointer.SpawnPointer
+api-version: '1.21'

@@ -1,0 +1,12 @@
+tp-delay: 2 #Seconds
+color-format: LEGACY
+
+message:
+  set-spawn-success: "&aPomyślnie ustawiono spawn!"
+  set-spawn-failure: "&cBłąd! Pozycja dla spawnu już istnieje. Usuń istniejący i stwórz nowy."
+  del-spawn-success: "&aPomyślnie usunięto!"
+  del-spawn-failure: "&cBłąd! Spawn nie został wcześniej ustawiony."
+  tp-spawn-starting: "&7Teleport się rozgrzewa.. Nie ruszaj się!"
+  tp-spawn-success: "&aZostałeś przeniesiony na spawn!"
+  tp-spawn-failure-moved: "&cRuszyłeś się! Teleportacja anulowana."
+  tp-spawn-failure-null: "&cSpawn nie został wcześniej ustawiony!"
