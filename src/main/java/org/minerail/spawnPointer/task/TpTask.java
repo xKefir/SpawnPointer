@@ -15,12 +15,12 @@ import java.util.UUID;
 public class TpTask {
     private SpawnPointer plugin;
     private Map<UUID, BukkitTask> taskMap = new HashMap<>();
-    private FinePosition pos;
     private Map<UUID, FinePosition> posMap = new HashMap<>();
 
     public TpTask(SpawnPointer plugin) {
         this.plugin = plugin;
     }
+
     public void start(long delay, Player p, Location loc, FinePosition pos) {
         posMap.put(p.getUniqueId(), pos);
         taskMap.put(p.getUniqueId(), Bukkit.getScheduler().runTaskLater(plugin, () -> {
@@ -28,18 +28,23 @@ public class TpTask {
             MessageDeliverUtil.sendFormatted(plugin.getConfigFile().get().getString("message.tp-spawn-success"),
                     p, plugin.getConfigFile().get().getString("color-format"));
             taskMap.remove(p.getUniqueId());
+            posMap.remove(p.getUniqueId());
         }, (delay * 20)));
     }
+
     public void stop(Player p) {
         BukkitTask t = taskMap.get(p.getUniqueId());
         if (t != null) {
             t.cancel();
             taskMap.remove(p.getUniqueId());
+            posMap.remove(p.getUniqueId());
         }
     }
+
     public FinePosition getPos(Player p) {
         return posMap.get(p.getUniqueId());
     }
+
     public boolean hasTask(Player p) {
         return taskMap.containsKey(p.getUniqueId());
     }
